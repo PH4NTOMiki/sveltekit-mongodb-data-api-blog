@@ -1,7 +1,7 @@
 <script context="module">
     /** @type {import('@sveltejs/kit').Load} */
-    export async function load({ params, fetch }) {
-        const data = await fetch(`/posts.json?slug=${params.slug}`);
+    export async function load({ page, fetch }) {
+        const data = await fetch(`/posts.json?slug=${page.params.slug}`);
         const {ok} = data;
         if (!ok) {
             throw new Error('Failed to load posts');
