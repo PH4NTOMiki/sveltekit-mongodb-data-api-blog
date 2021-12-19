@@ -1,7 +1,7 @@
 <script context="module">
     /** @type {import('@sveltejs/kit').Load} */
-    export async function load({ fetch }) {
-        const data = await fetch('/posts.json?all=1');
+    export async function load({ params, fetch }) {
+        const data = await fetch(`/posts.json?slug=${params.slug}`);
         const {ok} = data;
         if (!ok) {
             throw new Error('Failed to load posts');
@@ -17,6 +17,5 @@
 <script>
     export let data;
 </script>
-{#each data as post}
-    <a href={`/${post.slug}`} sveltekit:prefetch>{post.title}</a>
-{/each}
+<h1>{data.title}</h1>
+<p>{data.txt}</p>
