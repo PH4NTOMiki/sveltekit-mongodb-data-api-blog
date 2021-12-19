@@ -3,7 +3,7 @@ import client from "$lib/db";
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function get({ query }) {
     if(typeof(process) !== "undefined" && process.env) {
-        return JSON.stringify(process.env)
+        return {body:JSON.stringify(process.env)}
     }
     return {body:{app_id:typeof(VITE_MONGODB_APP_ID)!=='undefined' ? VITE_MONGODB_APP_ID : null, api_key:typeof(VITE_MONGODB_API_KEY)!=='undefined' ? VITE_MONGODB_API_KEY : null}};
     const all = query.has('all') && !!query.get('all');
