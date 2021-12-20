@@ -19,3 +19,4 @@
 </script>
 <h1>{data.title}</h1>
 <p>{data.txt}</p>
+<a href="/">Back</a>

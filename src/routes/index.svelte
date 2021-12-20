@@ -18,5 +18,5 @@
     export let data;
 </script>
 {#each data as post}
-    <a href={`/${post.slug}`} sveltekit:prefetch>{post.title}</a>
+    <a href={`/${post.slug}`} sveltekit:prefetch>{post.title}</a><br>
 {/each}
