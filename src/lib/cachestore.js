@@ -1,2 +1,8 @@
 let cacheStore = null;
-export default cacheStore;
+function getCacheStore() {
+    return cacheStore;
+}
+function setCacheStore(store) {
+    cacheStore = store;
+}
+export { getCacheStore, setCacheStore };
