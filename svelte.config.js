@@ -5,6 +5,7 @@ export default {
 		target: '#svelte',
 		adapter: cloudflare({
 			// any esbuild options
+			
 		})
 	}
 };

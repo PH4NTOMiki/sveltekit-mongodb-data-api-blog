@@ -1,8 +1,10 @@
 let cacheStore = null;
-function getCacheStore() {
-    return cacheStore;
+const a = {
+    get cacheStore() {
+        return cacheStore;
+    },
+    set cacheStore(value) {
+        cacheStore = value;
+    }
 }
-function setCacheStore(store) {
-    cacheStore = store;
-}
-export { getCacheStore, setCacheStore };
+export default a;

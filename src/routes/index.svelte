@@ -1,6 +1,6 @@
 <script context="module">
     import { browser } from '$app/env';
-    import { setCacheStore } from '$lib/cachestore';
+    import {cacheStore} from '$lib/cachestore';
     
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({ fetch }) {
@@ -10,7 +10,7 @@
             throw new Error('Failed to load posts');
         }
         const posts = await data.json();
-        if(browser)setCacheStore(posts.slice());
+        if(browser)cacheStore=posts.slice();
         return {
             props: {
                 data: posts,

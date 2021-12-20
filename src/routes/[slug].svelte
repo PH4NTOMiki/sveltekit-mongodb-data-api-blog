@@ -1,11 +1,11 @@
 <script context="module">
     import { browser } from '$app/env';
-    import { getCacheStore } from '$lib/cachestore';
+    import {cacheStore} from '$lib/cachestore';
     
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({ page, fetch }) {
-        if(browser && Array.isArray(getCacheStore())){
-            const found = getCacheStore().find(item => item.slug === page.params.slug);
+        if(browser && Array.isArray(cacheStore)){
+            const found = cacheStore.find(item => item.slug === page.params.slug);
             if(found){
                 return { props: {data: found} };
             }
