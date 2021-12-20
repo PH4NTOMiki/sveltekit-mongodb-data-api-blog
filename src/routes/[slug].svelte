@@ -1,6 +1,7 @@
 <script context="module">
     import { browser } from '$app/env';
-    import {cacheStore} from '$lib/cachestore';
+    import a from '$lib/cachestore';
+    let { cacheStore } = a;
     
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({ page, fetch }) {
