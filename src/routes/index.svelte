@@ -1,4 +1,7 @@
 <script context="module">
+    import { browser } from '$app/env';
+    import cacheStore from '$lib/cachestore';
+    
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({ fetch }) {
         const data = await fetch('/posts.json?all=1');
@@ -6,10 +9,11 @@
         if (!ok) {
             throw new Error('Failed to load posts');
         }
-
+        const posts = await data.json();
+        if(browser)cacheStore = posts.slice();
         return {
             props: {
-                data: await data.json(),
+                data: posts,
             },
         };
     }
@@ -18,5 +22,5 @@
     export let data;
 </script>
 {#each data as post}
-    <a href={`/${post.slug}`} sveltekit:prefetch>{post.title}</a><br>
+    <a href={`/${post.slug}`}>{post.title}</a><br>
 {/each}

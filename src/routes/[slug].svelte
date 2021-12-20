@@ -1,6 +1,15 @@
 <script context="module">
+    import { browser } from '$app/env';
+    import cacheStore from '$lib/cachestore';
+    
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({ page, fetch }) {
+        if(browser && Array.isArray(cacheStore)){
+            const found = cacheStore.find(item => item.slug === page.params.slug);
+            if(found){
+                return { props: {data: found} };
+            }
+        }
         const data = await fetch(`/posts.json?slug=${page.params.slug}`);
         const {ok} = data;
         if (!ok) {
