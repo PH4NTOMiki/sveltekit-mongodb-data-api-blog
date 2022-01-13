@@ -32,7 +32,7 @@ import { page } from '$app/stores';
 	onMount(async()=>{
 		if(cache){
 			data = await (await fetch(`/posts.json?slug=${$page.params.slug}`)).json()
-			const _index = data.findIndex(item => item.slug === $page.params.slug);
+			const _index = _.posts.findIndex(item => item.slug === $page.params.slug);
 			if(_index>-1)_.posts[_index] = {...data};
 		}
 		if(!_.posts.length){
